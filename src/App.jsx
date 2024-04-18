@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import CreatePost from "./components/CreatePost";
 import Footer from "./components/Footer";
@@ -6,13 +7,13 @@ import PostList from "./components/PostList";
 import Sidebar from "./components/Sidebar";
 
 const App = () => {
+  const [selectedTab, setSelectedTab] = useState("Home");
   return (
     <div className="d-flex">
-      <Sidebar />
+      <Sidebar selectedTab={selectedTab} onSelectedTab={setSelectedTab} />
       <div className="w-100">
         <Header />
-        <CreatePost />
-        <PostList />
+        {selectedTab === "Home" ? <PostList /> : <CreatePost />}
         <Footer />
       </div>
     </div>
