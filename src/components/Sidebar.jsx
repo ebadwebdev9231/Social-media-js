@@ -1,4 +1,4 @@
-import React from "react";
+import { IoCreate, IoHome } from "react-icons/io5";
 
 const Sidebar = ({ selectedTab, onSelectedTab }) => {
   return (
@@ -25,9 +25,9 @@ const Sidebar = ({ selectedTab, onSelectedTab }) => {
             }`}
             aria-current="page"
           >
-            <svg className="bi pe-none me-2" width="16" height="16">
-              <use xlinkHref="#home"></use>
-            </svg>
+            <span className="me-3 fs-5">
+              <IoHome />
+            </span>
             Home
           </a>
         </li>
@@ -38,9 +38,9 @@ const Sidebar = ({ selectedTab, onSelectedTab }) => {
               selectedTab === "Create Post" ? "active" : "link-body-emphasis"
             }`}
           >
-            <svg className="bi pe-none me-2" width="16" height="16">
-              <use xlinkHref="#speedometer2"></use>
-            </svg>
+            <span className="me-3 fs-5">
+              <IoCreate />
+            </span>
             Create Post
           </a>
         </li>
