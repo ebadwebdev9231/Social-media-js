@@ -1,44 +1,91 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import { PostListContext } from "../store/PostListStore";
 
 const CreatePost = () => {
+  const { addPost } = useContext(PostListContext);
+
+  const userIdRef = useRef();
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+  const reactionsRef = useRef();
+  const tagsRef = useRef();
+
+  const handlePost = (e) => {
+    e.preventDefault();
+    const userId = userIdRef.current.value;
+    const title = titleRef.current.value;
+    const description = descriptionRef.current.value;
+    const reactions = reactionsRef.current.value;
+    const tags = tagsRef.current.value.split(" ");
+
+    addPost(userId, title, description, reactions, tags);
+  };
+
   return (
-    <form>
+    <form className="w-50 mx-auto my-4" onSubmit={handlePost}>
       <div className="mb-3">
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-        <div id="emailHelp" className="form-text">
-          We'll never share your email with anyone else.
-        </div>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
+        <label htmlFor="userId" className="form-label">
+          User ID
         </label>
         <input
           type="text"
+          ref={userIdRef}
           className="form-control"
-          id="exampleInputPassword1"
+          id="userId"
+          placeholder="Please add User ID"
         />
       </div>
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
+      <div className="mb-3">
+        <label htmlFor="postTitle" className="form-label">
+          Post Title
         </label>
+        <input
+          type="text"
+          ref={titleRef}
+          className="form-control"
+          id="postTitle"
+          placeholder="How are you feeling Today.....?"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="postDescription" className="form-label">
+          Post Description
+        </label>
+        <textarea
+          type="text"
+          ref={descriptionRef}
+          className="form-control"
+          id="postDescription"
+          rows="4"
+          placeholder="What are you doing today?"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="reactions" className="form-label">
+          Post Reactions
+        </label>
+        <input
+          type="number"
+          ref={reactionsRef}
+          className="form-control"
+          id="reactions"
+          placeholder="Add Post reactions"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="tags" className="form-label">
+          Tags
+        </label>
+        <input
+          type="text"
+          ref={tagsRef}
+          className="form-control"
+          id="tags"
+          placeholder="Add tags related by post."
+        />
       </div>
       <button type="submit" className="btn btn-primary">
-        Submit
+        Post
       </button>
     </form>
   );
