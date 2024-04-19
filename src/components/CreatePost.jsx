@@ -18,6 +18,12 @@ const CreatePost = () => {
     const reactions = reactionsRef.current.value;
     const tags = tagsRef.current.value.split(" ");
 
+    userIdRef.current.value = "";
+    titleRef.current.value = "";
+    descriptionRef.current.value = "";
+    reactionsRef.current.value = "";
+    tagsRef.current.value = "";
+
     addPost(userId, title, description, reactions, tags);
   };
 

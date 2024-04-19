@@ -7,7 +7,7 @@ const PostList = () => {
   return (
     <div className="row p-4">
       {postList.map((post) => (
-        <div key={post.id} className="col-lg-4 col-md-6">
+        <div key={post.id} className="col-xl-4 col-lg-6 col-md-12">
           <Post post={post} />
         </div>
       ))}

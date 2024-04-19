@@ -1,4 +1,4 @@
-import { createContext, useCallback, useReducer } from "react";
+import { createContext, useReducer } from "react";
 
 const defaultContext = {
   postList: [],
