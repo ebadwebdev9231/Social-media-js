@@ -26,16 +26,16 @@ export const PostListContext = createContext(defaultContext);
 
 const PostListProvider = ({ children }) => {
   const [postList, dispatch] = useReducer(reducer, []);
-  const addPost = (userId, title, description, reactions, tags) => {
+  const addPost = (userId, title, body, reactions, tags) => {
     dispatch({
       type: "ADD_POST",
       payload: {
         id: Date.now(),
-        userId: userId,
-        title: title,
-        description: description,
-        reactions: reactions,
-        tags: tags,
+        userId,
+        title,
+        body,
+        reactions,
+        tags,
       },
     });
   };
