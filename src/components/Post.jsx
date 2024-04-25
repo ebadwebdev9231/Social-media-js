@@ -14,7 +14,7 @@ const Post = ({ post }) => {
         >
           <FaTimes />
         </span>
-        <p className="card-text">{post.description}</p>
+        <p className="card-text">{post.body}</p>
         {post.tags.map((tag, index) => (
           <span key={index} className="badge text-bg-primary me-1">
             {tag}

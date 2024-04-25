@@ -11,6 +11,9 @@ const reducer = (state, action) => {
     case "DELETE_POST":
       return state.filter((post) => post.id !== action.payload.postId);
 
+    case "ADD_INITIAL_POSTS":
+      return action.payload.posts;
+
     case "ADD_POST":
       return [action.payload, ...state];
 
@@ -36,6 +39,16 @@ const PostListProvider = ({ children }) => {
       },
     });
   };
+
+  const addInitialPosts = (posts) => {
+    dispatch({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        posts,
+      },
+    });
+  };
+
   const deletePost = (postId) => {
     dispatch({
       type: "DELETE_POST",
@@ -45,7 +58,9 @@ const PostListProvider = ({ children }) => {
     });
   };
   return (
-    <PostListContext.Provider value={{ postList, addPost, deletePost }}>
+    <PostListContext.Provider
+      value={{ postList, addPost, addInitialPosts, deletePost }}
+    >
       {children}
     </PostListContext.Provider>
   );
